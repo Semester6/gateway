@@ -42,6 +42,16 @@
             <artifactId>java-jwt</artifactId>
             <version>3.19.1</version>
         </dependency>
+		<dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+			<version>3.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>7.1.1</version>
+		</dependency>
     </dependencies>
 	<dependencyManagement>
 		<dependencies>

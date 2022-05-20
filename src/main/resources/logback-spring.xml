@@ -1,0 +1,39 @@
+<configuration>
+    <springProperty name="host" source="logging.logstash.host" default="false"/>
+    <springProperty name="enabled" source="logging.logstash.enabled"/>
+    <if condition='property("enabled").equals("true")'>
+        <then>
+            <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+                <destination>${host}</destination>
+                <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+                    <includeMdcKeyName>X-TRACKING-ID</includeMdcKeyName>
+                </encoder>
+            </appender>
+        </then>
+    </if>
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>
+                    %black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable
+                </Pattern>
+            </layout>
+        </encoder>
+    </appender>
+
+    <!-- LOG everything at INFO level -->
+    <root level="info">
+        <appender-ref ref="Console"/>
+        <if condition='property("enabled").equals("true")'>
+            <then>
+                <appender-ref ref="logstash"/>
+            </then>
+        </if>
+    </root>
+
+    <!-- LOG "com.baeldung*" at TRACE level -->
+    <logger name="com.baeldung" level="trace" additivity="false">
+        <appender-ref ref="Console"/>
+    </logger>
+
+</configuration>
