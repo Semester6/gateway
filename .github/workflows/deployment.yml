@@ -14,18 +14,15 @@ jobs:
       packages: write
     steps:
     - name: checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
-        ref: main
+        ref: master
     - name: Set up JDK    
       uses: actions/setup-java@v1 
       with:        
         java-version: 1.17
     - name: Build with Maven      
       run: mvn package
-    - name: Push Docker image to Docker Registry
-    - name: Check out the repo
-      uses: actions/checkout@v3
     - name: Docker build
       run: docker build . --tag registry.vimuens.nl/watcherz-gateway:latest
     - name: Publish to Docker Registry
