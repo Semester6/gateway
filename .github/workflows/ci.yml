@@ -22,24 +22,3 @@ jobs:
           
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots package
-      
-  deploy:
-    runs-on: ubuntu-latest
-    
-#     name: Publish Docker image
-#     on:
-#         release:
-#           types: [published]
-
-#     jobs:
-#     push_to_registry:
-    name: Push Docker image to Docker Registry
-#     runs-on: ubuntu-latest
-    steps:
-    - name: Check out the repo
-      uses: actions/checkout@v3
-      
-    - name: Docker build
-      run: docker build . --tag registry.vimuens.nl/watcherz-gateway:latest
-    - name: Publish to Docker Registry
-      run: docker push registry.vimuens.nl/watcherz-gateway:latest
