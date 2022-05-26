@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: watcherz
+  labels:
+    app: gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: watcherz-gateway
+          image:  registry.vimuens.nl/watcherz-gateway:latest
+          imagePullPolicy: Always
+          env:
+            - name: eureka.client.serviceUrl.defaultZone
+              value: http://discoveryservice:8761/eureka
+            - name: eureka.instance.prefer-ip-address
+              value: "true"
+            - name: server.port
+              value: "9091"
+          ports:
+            - containerPort: 8083
