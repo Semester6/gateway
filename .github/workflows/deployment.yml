@@ -27,3 +27,8 @@ jobs:
       run: docker build . --tag registry.vimuens.nl/watcherz-gateway:latest
     - name: Publish to Docker Registry
       run: docker push registry.vimuens.nl/watcherz-gateway:latest
+    - shell: bash
+      env:
+        KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      run: |
+        kubectl apply --kubeconfig $KUBECONFIG  -f kubernetes
