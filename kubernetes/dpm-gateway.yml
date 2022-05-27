@@ -25,5 +25,7 @@ spec:
               value: "9091"
             - name: spring.cloud.kubernetes.discovery.enabled
               value: "true"
+            - name: spring.cloud.kubernetes.reload.enabled
+              value: "true"
           ports:
             - containerPort: 8083
