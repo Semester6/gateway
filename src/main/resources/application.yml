@@ -3,6 +3,8 @@ spring:
     name: api-gateway
   cloud:
     kubernetes:
+      reload:
+        enabled: true
       discovery:
         enabled: true
   port: 8089
