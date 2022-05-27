@@ -24,6 +24,6 @@ spec:
             - name: server.port
               value: "9091"
             - name: spring.cloud.kubernetes.discovery.enabled
-              value: true
+              value: "true"
           ports:
             - containerPort: 8083
