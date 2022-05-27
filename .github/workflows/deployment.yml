@@ -27,8 +27,9 @@ jobs:
       run: docker build . --tag registry.vimuens.nl/watcherz-gateway:latest
     - name: Publish to Docker Registry
       run: docker push registry.vimuens.nl/watcherz-gateway:latest
-    - shell: bash
+    - name: Kubectl
+    - uses: actions-hub/kubectl@master
       env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
-      run: |
-        kubectl apply --kubeconfig $KUBECONFIG  -f kubernetes
+        KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
+      with:
+        args: apply -f kubernetes
