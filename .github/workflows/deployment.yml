@@ -13,11 +13,6 @@ jobs:
       contents: read
       packages: write
     steps:
-    - uses: actions-hub/kubectl@master
-      env:
-        KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
-      with:
-        args: get pods
     - name: checkout
       uses: actions/checkout@v3
       with:
@@ -32,5 +27,8 @@ jobs:
       run: docker build . --tag registry.vimuens.nl/watcherz-gateway:latest
     - name: Publish to Docker Registry
       run: docker push registry.vimuens.nl/watcherz-gateway:latest
-    - name: Kubectl
-      run: kubectl apply -f kubernetes
+    - uses: actions-hub/kubectl@master
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
+      with:
+        args: apply -f kubernetes
