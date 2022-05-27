@@ -13,10 +13,11 @@ jobs:
       contents: read
       packages: write
     steps:
-    - name: Kubernetes CLI (kubectl)
-      uses: tale/kubectl-action@v1.0.2
+    - uses: actions-hub/kubectl@master
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
       with:
-        base64-kube-config: ${{ secrets.KUBECONFIG }}
+        args: get pods
     - name: checkout
       uses: actions/checkout@v3
       with:
