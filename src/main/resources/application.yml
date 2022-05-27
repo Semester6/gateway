@@ -2,19 +2,12 @@ spring:
   application:
     name: api-gateway
   cloud:
-    gateway:
+    kubernetes:
       discovery:
-        locator:
-          enabled: true
-server:
+        enabled: false
   port: 8089
-
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: true
 
 logging:
   logstash:
     host: localhost:9500
-    enabled: true
+    enabled: false

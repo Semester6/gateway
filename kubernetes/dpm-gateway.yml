@@ -21,11 +21,9 @@ spec:
           image:  registry.vimuens.nl/watcherz-gateway:latest
           imagePullPolicy: Always
           env:
-            - name: eureka.client.serviceUrl.defaultZone
-              value: http://discoveryservice:8761/eureka
-            - name: eureka.instance.prefer-ip-address
-              value: "true"
             - name: server.port
               value: "9091"
+            - name: spring.cloud.kubernetes.discovery.enabled
+              value: true
           ports:
             - containerPort: 8083
