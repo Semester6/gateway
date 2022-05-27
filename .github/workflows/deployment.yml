@@ -13,6 +13,10 @@ jobs:
       contents: read
       packages: write
     steps:
+    - name: Kubernetes CLI (kubectl)
+      uses: tale/kubectl-action@v1.0.2
+      with:
+        base64-kube-config: ${{ secrets.KUBECONFIG }}
     - name: checkout
       uses: actions/checkout@v3
       with:
@@ -28,7 +32,4 @@ jobs:
     - name: Publish to Docker Registry
       run: docker push registry.vimuens.nl/watcherz-gateway:latest
     - name: Kubectl
-      uses: tale/kubectl-action@v1
-      with:
-        base64-kube-config: ${{ secrets.KUBECONFIG }}
-    - run: kubectl apply -f kubernetes
+      run: kubectl apply -f kubernetes
