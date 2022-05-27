@@ -5,6 +5,7 @@ spring:
     kubernetes:
       reload:
         enabled: true
+        url-expression: "'http://'+serviceId+':'+getPort()"
       discovery:
         enabled: true
   port: 8089
