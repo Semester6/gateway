@@ -21,7 +21,7 @@ public class RouteBuilder {
                 .route(r -> r
                         .path("/movie/**")
                         .filters(f -> f.filter(filter))
-                        .uri("lb://MOVIE-SERVICE"))
+                        .uri("lb://movieservice"))
 //                .route(r -> r
 //                        .path("/user/**")
 //                        .filters(f -> f.addRequestHeader("something", "something"))
@@ -29,7 +29,7 @@ public class RouteBuilder {
                 .route(r -> r
                         .path("/auth/**")
                         .filters(f -> f.filter(filter))
-                        .uri("lb://AUTHENTICATION-SERVICE"))
+                        .uri("lb://authservice"))
                 .build();
     }
 }
