@@ -1,4 +1,6 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: api-gateway
   cloud:
@@ -7,12 +9,16 @@ spring:
         enabled: true
         url-expression: "uri+'/'"
       discovery:
+        locator:
+          enabled: true
+          url-expression: "http://'+serviceId+':'+getPort()"
+          lower-case-service-id: true
         enabled: true
   port: 8089
-ribbon:
-  http:
-    client:
-      enabled: true
+#ribbon:
+#  http:
+#    client:
+#      enabled: true
 logging:
   logstash:
     host: localhost:9500
