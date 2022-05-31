@@ -27,5 +27,7 @@ spec:
               value: "true"
             - name: spring.cloud.kubernetes.reload.enabled
               value: "true"
+            - name: spring.cloud.kubernetes.discovery.locator.enabled
+              value: "true"
           ports:
             - containerPort: 8083

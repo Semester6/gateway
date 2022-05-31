@@ -6,10 +6,11 @@ spring:
   cloud:
     kubernetes:
       reload:
-        enabled: true
+        enabled: false
         url-expression: "uri+'/'"
       discovery:
-        server-url: "https://82.73.212.90:16443"
+        enabled: false
+#        server-url: "https://82.73.212.90:16443"
         locator:
           enabled: false
           url-expression: "http://'+serviceId+':'+getPort()"
