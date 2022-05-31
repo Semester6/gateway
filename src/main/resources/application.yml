@@ -9,7 +9,10 @@ spring:
       discovery:
         enabled: true
   port: 8089
-
+ribbon:
+  http:
+    client:
+      enabled: true
 logging:
   logstash:
     host: localhost:9500
