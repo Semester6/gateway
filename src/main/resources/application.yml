@@ -9,16 +9,16 @@ spring:
         enabled: true
         url-expression: "uri+'/'"
       discovery:
+        server-url: "https://82.73.212.90:16443"
         locator:
-          enabled: true
+          enabled: false
           url-expression: "http://'+serviceId+':'+getPort()"
           lower-case-service-id: true
-        enabled: true
   port: 8089
-#ribbon:
-#  http:
-#    client:
-#      enabled: true
+ribbon:
+  http:
+    client:
+      enabled: true
 logging:
   logstash:
     host: localhost:9500
