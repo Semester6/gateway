@@ -31,3 +31,6 @@ spec:
               value: "true"
           ports:
             - containerPort: 8083
+          resources:
+            requests:
+              cpu: "250m"
